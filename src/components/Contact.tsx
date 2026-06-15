@@ -19,11 +19,11 @@ export default function Contact() {
     const subject = `Nuevo mensaje de contacto de ${name}`;
     const body = `Nombre: ${name}\nEmail: ${email}\n\n${message}`;
 
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      CONTACT_EMAIL
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    window.location.href = mailtoUrl;
+    window.open(gmailUrl, "_blank", "noopener,noreferrer");
     setSent(true);
     form.reset();
   };
@@ -144,7 +144,7 @@ export default function Contact() {
               {/* Status message */}
               {sent && (
                 <div className="text-sm px-4 py-3 rounded-lg bg-emerald-50 border border-accent/30 text-emerald-700">
-                  Se abrió tu cliente de correo con el mensaje listo para enviar.
+                  Se abrió Gmail en una nueva pestaña con el mensaje listo para enviar.
                 </div>
               )}
 
